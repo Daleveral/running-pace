@@ -1,0 +1,94 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #f9f9f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    width: 570px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2.5em;
+    color: #d72525;
+}
+
+.input-group, .output-group {
+    margin-bottom: 35px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    color:rgb(220, 32, 22)
+}
+
+label {
+    font-weight: bold;
+    font-size: 1.3em;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+#time, #distance, .output-box {
+    width: 96%;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 1.2em;
+    text-align: center;
+    background: #ffffff;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.unit {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.1em;
+    color: #888;
+}
+
+.distance-label-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.shortcut-buttons {
+    display: flex;
+    gap: 8px;
+}
+
+.shortcut {
+    border: 1px solid #ddd;
+    background: #ffffff;
+    border-radius: 10px;
+    padding: 6px 12px;
+    font-size: 0.9em;
+    cursor: pointer;
+    transition: box-shadow 0.2s ease;
+}
+
+.shortcut:hover {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.distance-wrapper {
+    display: flex;
+    position: relative;
+    width: 100%;
+    align-items: center;
+}
