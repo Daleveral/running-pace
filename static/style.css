@@ -156,7 +156,7 @@ label {
     background: #fff;
     padding: 20px;
     width: 42%;
-    height: 50%;
+    height: 54%;
     border-radius: 10px;
     text-align: center;
 }
@@ -187,7 +187,7 @@ label {
 }
 
   .confirm-btn {
-    margin-top: 20px;
+    margin-top: 17px;
     padding: 10px 20px;
     cursor: pointer;
     color: rgb(238, 242, 245);
