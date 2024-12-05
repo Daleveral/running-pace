@@ -53,7 +53,7 @@
           <div class ="about-info">
             <p>时长框可以输入 2 ~ 6 个数字, 输入后回车或点击框外即可, 数字识别规则为 :</p>
             <ul>
-              <li>两个数 : 秒</li>
+              <li>两个数如 12 → 12 分钟</li>
               <li>三个数如 123 → 1 小时 23 分</li>
               <li>四个数如 1234 → 12 分 34 秒</li>
               <li>五个数如 12345 → 1 小时 23 分 45 秒</li>
@@ -106,7 +106,7 @@
             let hours = 0, minutes = 0, seconds = 0;
 
             if (raw.length === 2) {
-                seconds = parseInt(raw, 10);
+                minutes = parseInt(raw, 10);
             } else if (raw.length === 3) {
                 hours = parseInt(raw[0], 10);
                 minutes = parseInt(raw.slice(1), 10);
