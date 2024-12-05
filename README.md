@@ -2,7 +2,6 @@
     <b>Pace Calc for Runners</b>
 </p>
 
-<br/>
 
 <p align="center">
     基于 python flask 搭建
