@@ -2,15 +2,9 @@
     <b>Pace Calc for Runners</b>
 </p>
 
-
-<p align="center">
-    基于 python flask 搭建
-</p>
-
-
-
 ___
 
+基于 python flask 搭建
 
 自上至下 : 时长框, 路程框, 结果框
 
