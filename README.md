@@ -18,13 +18,14 @@ ___
 
 ( 你也可以尝试输入一些人名, 也许会有彩蛋呢 ... )
 
-路程框可以自由输入公里数, 也有几个快捷按钮, 400m, 10km, 半马, 全马等, 计算是自动进行的，前面两个数值改动了，配速也同步计算
+路程框可以自由输入公里数, 也有几个快捷按钮, 400m, 10km, 半马, 全马等, 计算是自动进行的，前面两个数值改动了，配速也同步计算. 点击红色标题 Run Pace Calc 即可清空内容.
 
 <br/>
 
 效果如下 :
 
-![image](https://github.com/user-attachments/assets/cb3ee7d2-554b-48ec-879b-427c771aa7c4)
+![{E5D3AA98-37F4-4549-96FC-E7EAD3B5FFE1}](https://github.com/user-attachments/assets/d03ae575-2a55-4945-b859-444a951f8b5d)
+
 
 
 <br/>
