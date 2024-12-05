@@ -11,7 +11,7 @@
         <h1><a href="https://github.com/Daleveral/running-pace" target="_blank" style="text-decoration: none; color: #d72525;">Run Pace Calc</a></h1>
         <div class="input-group">
             <label for="time">Time</label>
-            <input id="time" type="text" maxlength="6" placeholder="Enter 2~6 digits">
+            <input id="time" type="text" maxlength="8" placeholder="Enter time ( 2 ~ 6 numbers )">
         </div>
         <div class="input-group">
             <div class="distance-label-wrapper">
@@ -36,9 +36,39 @@
             <label for="pace">Pace</label>
             <div id="pace" class="output-box">-</div>
         </div>
+
+        <!-- <div style="text-align: right; margin-top: -10px; margin-bottom: -15px;">
+            <a href="https://github.com/Daleveral/running-pace" target="_blank" style="text-decoration: none; color: #d72525;">
+            about
+            </a>
+        </div> -->
+
+        <button id="about-btn" class="about-btn">About</button>
+
     </div>
+
+
+    <div id="about-window" class="about-window">
+        <div class="about-content">
+          <div class ="about-info">
+            <p>时长框可以输入 2 ~ 6 个数字, 数字识别规则如下 :</p>
+            <ul>
+              <li>两个数 : 秒</li>
+              <li>三个数如 123 → 1 小时 23 分</li>
+              <li>四个数如 1234 → 12 分 34 秒</li>
+              <li>五个数如 12345 → 1 小时 23 分 45 秒</li>
+              <li>六个数如 123456 → 12 小时 34 分 56 秒 （ 越野跑大佬 👍🏻 ）</li>
+            </ul>
+            <p>路程框可以自由输入公里数, 也有几个快捷按钮, 400m, 10km, 半马, 全马等. 计算是自动进行的，前面两个数值输入了，配速也同步计算</p>
+            <p >作者 : Dale  /  源代码 : <a href="https://github.com/Daleveral/running-pace" target="_blank" style="color:#d72525; text-decoration: none;">GitHub Repo</a></p>
+          </div>
+          <button id="confirm-btn" class="confirm-btn">确认</button>
+        </div>
+      </div>
+
+
     <script>
-        function calculatePace(timeInSeconds, distance) {
+        function calculatePace(timeInSeconds, distance) { // 计算配速
             if (distance > 0) {
                 const paceInSeconds = timeInSeconds / distance;
                 const minutes = Math.floor(paceInSeconds / 60);
@@ -48,13 +78,33 @@
             return '-';
         }
 
-        function parseTime(raw) {
+        function parseTime(raw) { // 解析时间
+            if (!/\d/.test(raw)) {
+                if (raw === "基普图姆") { return { hours: 2, minutes: 0, seconds: 35 };}
+                if (raw === "kiptum" || raw === "Kiptum" ) { return { hours: 2, minutes: 0, seconds: 35 };}
+                if (raw === "基普乔格") { return { hours: 2, minutes: 1, seconds: 9 };}
+                if (raw === "kipchoge" || raw === "Kipchoge" ) { return { hours: 2, minutes: 1, seconds: 9 };}
+                if (raw === "世界纪录") { return { hours: 2, minutes: 0, seconds: 35 };}
+                if (raw === "半马") { return { hours: 0, minutes: 57, seconds: 30 };}
+                if (raw === "科杰尔查") { return { hours: 0, minutes: 57, seconds: 30 };}
+                if (raw === "大迫杰") { return { hours: 2, minutes: 5, seconds: 29 };}
+                if (raw === "贝克勒") { return { hours: 2, minutes: 1, seconds: 41 };}
+                if (raw === "何杰") { return { hours: 2, minutes: 6, seconds: 57 };}
+                if (raw === "扎西次仁") { return { hours: 1, minutes: 1, seconds: 57 };}
+                if (raw === "切普格蒂奇") { return { hours: 2, minutes: 9, seconds: 56 };}
+                if (raw === "一级") { return { hours: 2, minutes:31, seconds: 10 };}
+                if (raw === "二级") { return { hours: 2, minutes:51, seconds: 30 };}
+                if (raw === "健将") { return { hours: 2, minutes:19, seconds: 20 };}
+                if (raw === "半马一级") { return { hours: 1, minutes:11, seconds: 30 };}
+                if (raw === "半马二级") { return { hours: 1, minutes:17, seconds: 30 };}
+                if (raw === "半马健将") { return { hours: 1, minutes:6, seconds: 0 };}
+                if (raw === "Dale" || raw === "dale" ) { return { hours: 1, minutes: 58, seconds: 35 };}
+            }
+
             raw = raw.replace(/[^0-9]/g, '');
             let hours = 0, minutes = 0, seconds = 0;
 
-            if (raw.length === 1) {
-                seconds = parseInt(raw, 10);
-            } else if (raw.length === 2) {
+            if (raw.length === 2) {
                 seconds = parseInt(raw, 10);
             } else if (raw.length === 3) {
                 hours = parseInt(raw[0], 10);
@@ -71,15 +121,22 @@
                 minutes = parseInt(raw.slice(2, 4), 10);
                 seconds = parseInt(raw.slice(4), 10);
             }
-
             return { hours, minutes, seconds };
         }
 
-        function formatTime(hours, minutes, seconds) {
+        function formatTime(hours, minutes, seconds) { // 格式化时间
             return `${hours.toString().padStart(2, '0')} : ${minutes.toString().padStart(2, '0')} : ${seconds.toString().padStart(2, '0')}`;
         }
 
         const timeInput = document.getElementById('time');
+        timeInput.addEventListener('focus', () => {
+            const raw = timeInput.value;
+            if (raw && raw.includes(':')) {
+                // 允许在已有时分秒格式下修改
+                timeInput.value = raw.replace(/[^0-9]/g, '');
+            }
+        });
+
         timeInput.addEventListener('blur', () => {
             const raw = timeInput.value;
             if (raw.length >= 1) {
@@ -95,8 +152,10 @@
                 const { hours, minutes, seconds } = parseTime(raw);
                 timeInput.value = formatTime(hours, minutes, seconds);
                 updatePace();
+                timeInput.blur();
             }
         });
+
 
         const distanceInput = document.getElementById('distance');
         document.querySelectorAll('.shortcut').forEach(button => {
@@ -116,6 +175,22 @@
             const distance = parseFloat(document.getElementById('distance').value);
             document.getElementById('pace').textContent = calculatePace(timeInSeconds, distance);
         }
+
+        document.getElementById('about-btn').addEventListener('click', function() {
+            document.getElementById('about-window').style.display = 'flex';
+        });
+
+        document.getElementById('confirm-btn').addEventListener('click', function() {
+            document.getElementById('about-window').style.display = 'none';
+        });
+
+        document.getElementById('about-window').addEventListener('click', function(event) {
+            if (event.target === document.getElementById('about-window')) {
+            document.getElementById('about-window').style.display = 'none';
+            }
+        });
+
+
     </script>
 </body>
 </html>

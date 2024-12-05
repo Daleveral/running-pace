@@ -14,7 +14,7 @@ body {
     padding: 30px;
     border-radius: 15px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    width: 40%;
+    width: 38%;
 }
 
 @media (max-width: 768px) {
@@ -81,7 +81,7 @@ label {
     justify-content: flex-start;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 418px) {
     .distance-label-wrapper {
         flex-direction: column;
         align-items: flex-start;
@@ -115,3 +115,86 @@ label {
 }
 
 
+
+/* neo */
+
+
+/* 保持原有 container 样式不变 */
+.container {
+    position: relative;
+    padding: 32px;
+  }
+  
+  .about-btn {
+    position: absolute;
+    bottom: 10px;
+    right: 32px;
+    padding: 4px 18px;
+    cursor: pointer;
+    color: rgba(150, 14, 14, 0.785);
+    border: 1px solid #ddd;
+    background: #eee3e31a;
+    border-radius: 10px;
+    font-size: 0.9em;
+  }
+  
+  /* 新增的弹窗样式 */
+  .about-window {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.259);
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+  }
+  
+.about-content {
+    background: #fff;
+    padding: 20px;
+    width: 42%;
+    height: 50%;
+    border-radius: 10px;
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .about-content {
+            width: 84%;
+            height: 71%;
+            padding: 20px;
+
+    }
+}
+
+  .about-info {
+    margin-left: 7%;
+    margin-right: 7%;
+    margin-bottom: 20px;
+    font-size: 1em;
+    color: #09154d;
+    text-align: left;
+
+  }
+  
+  @media (max-width: 768px) {
+    .about-info {
+        font-size: 0.9em;
+    }
+}
+
+  .confirm-btn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    cursor: pointer;
+    color: rgb(238, 242, 245);
+    border: 1px solid #ddd;
+    background: #e13434db;
+    border-radius: 10px;
+    font-size: 1.1em;
+    text-align: center;
+  }
+  
